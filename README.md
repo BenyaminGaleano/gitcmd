@@ -1,12 +1,14 @@
-#git
+# git
 
- ```git checkout -b NOMBRE``` (por si querés hacer una rama y te coloca en ella o sea digamos que querés probar algo mientras chang está trabajando en el  mismo componente hace la rama probas mientras chang sigue en lo suyo y si mira que ya está le avisas y ya le podes hacer merge)
+## Manejo de ramas
+
+```git checkout -b NOMBRE```(por si querés hacer una rama y te coloca en ella o sea digamos que querés probar algo mientras chang está trabajando en el  mismo componente hace la rama probas mientras chang sigue en lo suyo y si mira que ya está le avisas y ya le podes hacer merge)
 
 ```git checkout NOMBRE``` para salta entre ramas o se si estás en la que creaste pordes regresar a la master con git checkout master
 
 ```git merge NOMBRE -m 'Mensaje del merge'``` fusiona la rama que tenés seleccionada con NOMBRE o sea que pega lo que pueda en la rama actual ya te dja listo para sólo hacer git push sin necesidad de hacer git add y git commit
 
-Aquí van unos extras:
+## Aquí van unos extras:
 si se te olvida en que rama estás jajajaj porque puede pasar usa
 
 ```git branch --list```
@@ -15,9 +17,11 @@ si se te olvida en que rama estás jajajaj porque puede pasar usa
 
 ```git show-branch``` esta es más copacta jajaja
 
-```git branch -d NOMBRE``` elimina la rama por si sólo la usaste un momento te la podes clavar con eso
+```git branch -d NOMBRE``` elimina la rama por si sólo la usaste un momento te la podes clavar con eso.
 
-Útiles
+```git branch -D NOMBRE``` elimina la rama no importando si existe algún problema (cuidado).
+
+## Útiles
 
 ```git add .``` agrega el directorio actual a los cambios
 
@@ -38,6 +42,10 @@ si se te olvida en que rama estás jajajaj porque puede pasar usa
 ```git reset ARCHIVO``` lo quita del espacio de trabajo (añadido con git add), sin argumento para quitar todos los archivos del espacio del espacio de trabajo.
 
 ## Para Github
-```git push —delete NOMBRERAMA``` para eliminar ramas en Github y no sólo localmente
+```git push —delete NOMBRERAMA``` para eliminar ramas en Github y no sólo localmente.
 
-```git remote update REMOTO --prune``` actualizar las ramas locales
+```git remote update REMOTO --prune``` actualizar las ramas locales.
+
+```git fetch REMOTO``` traer desde el remoto todo lo que no se tenga localmente.
+
+
