@@ -2,50 +2,97 @@
 
 ## Manejo de ramas
 
-```git checkout -b NOMBRE```(por si querés hacer una rama y te coloca en ella o sea digamos que querés probar algo mientras chang está trabajando en el  mismo componente hace la rama probas mientras chang sigue en lo suyo y si mira que ya está le avisas y ya le podes hacer merge)
+- `git checkout -b NOMBRE`(por si quieres hacer una rama, te coloca en ella de una, o sea
+digamos que quieres probar algo mientras Chang está trabajando en el mismo componente,
+hace la rama, probas mientras Chang sigue en lo suyo y si miras que ya está le avisas y
+ya le podes hacer merge).
 
-```git checkout NOMBRE``` para salta entre ramas o se si estás en la que creaste pordes regresar a la master con git checkout master
+- `git checkout NOMBRE` para saltar entre ramas, por ejemplo estás en la rama que
+creaste, podes regresar a la **main** con `git checkout main`
 
-```git merge NOMBRE -m 'Mensaje del merge'``` fusiona la rama que tenés seleccionada con NOMBRE o sea que pega lo que pueda en la rama actual ya te dja listo para sólo hacer git push sin necesidad de hacer git add y git commit
+- `git merge NOMBRE -m 'Mensaje del merge'` fusiona la rama que tienes seleccionada
+con NOMBRE, si no es posible te lo notifica (te toca reparar manualmente), ya te deja
+listo para sólo hacer `git push` sin necesidad de hacer `git add` y `git commit`.
 
 ## Aquí van unos extras:
-si se te olvida en que rama estás jajajaj porque puede pasar usa
+si se te olvida en que rama estás xD, porque puede pasar, usa:
 
-```git branch --list```
+- `git branch --list` Lista las ramas.
 
-```git branch -a``` todas las ramas hasta los que no tienen descargadas (hacer primero update de las ramas)
+- `git branch -v` Lista las ramas, pero también muestra el último commit.
 
-```git show-branch``` esta es más copacta jajaja
+- `git branch -a` todas las ramas hasta los que no tienen descargadas
+(hacer primero [update de las ramas](#para-github))
 
-```git branch -d NOMBRE``` elimina la rama por si sólo la usaste un momento te la podes clavar con eso.
+- `git show-branch` esta es más compacta xD.
 
-```git branch -D NOMBRE``` elimina la rama no importando si existe algún problema (cuidado).
+- `git branch -d NOMBRE` elimina la rama por si sólo la usaste un momento,
+te la podes clavar con eso.
+
+- `git branch -D NOMBRE` elimina la rama no importando si existe algún problema (cuidado).
 
 ## Útiles
 
-```git add .``` agrega el directorio actual a los cambios
+- `git add [ARCHIVO1 ARCHIVO2 ...]` agrega los archivos a los cambios, también
+se puede colocar por ejemplo `.` para indicar que agregue todos los cambios en
+el directorio actual.
 
-```git commit -m 'mensaje'``` agrega el trabajo añadido por add a los cambios aprobados (local)
+- `git add -A` agrega todo sin importar en que path dentro del repositorio se esté.
 
-```git push -u REMOTO RAMA``` si clonaron el repo el remoto sería origin y la rama depende donde estén si crearon una nueva rama si es obligatorio el nombre sino pueden sólo poner ```git push``` 
-(agrega los cambios al repo del github)
+- `git commit -m 'mensaje'` agrega el trabajo añadido por add a los cambios aprobados (local).
+Si no se agrega el -m, se abre un editor para la estructuración de un commit, esto
+es bueno ya que permite usar la estructura completa de un commit.
 
-```git pull REMOTO RAMA``` como me imagino que van a estar en la rama que es y sólo un remoto porque no le veo porque tener más jajaj nunca he usado más de uno entonces  pueden usar sólo ```git pull```
-(se webea los cambios jajaj)
+```
+Breve descripción (título)
 
-```git log``` les muestra todos los commits que se han hecho, presionen **q** para salir, pueden copiar el número de commit y darle checkout, para visitar lo que que se tenía en ese commit 
+[cuerpo del commit (opcional)]
 
-```git checkout COMMITID .``` para regresar la rama actual a cierto commit.
+[footers (opcional)]
+```
 
-```git restore NOMBRE_ARCHIVO``` para restaurar un archivo que no ha sido agregado con git add, si ya ha sido agregado ejecute el siguiente, se puede pasar ```.``` para restaurar todo el directorio (recuerde que no deben estar en el espacio de trabajo).
+También es recomendado ver [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/),
+que es un estándar que actualmente está siendo usado.
 
-```git reset ARCHIVO``` lo quita del espacio de trabajo (añadido con git add), sin argumento para quitar todos los archivos del espacio del espacio de trabajo.
+
+- `git push REMOTO RAMA` si clonaron el repo el REMOTO sería `origin`
+y la RAMA depende donde estén, si crearon una nueva rama si es obligatorio
+el nombre, sino pueden sólo poner `git push REMOTO` (realmente si está
+configurada la rama default), también se pueden hacer configuraciones
+para dejar por defecto y seguir usando la versión corta `git push`.
+
+
+- `git pull REMOTO RAMA` extrae los cambios desde un remote y los fusiona con la rama
+actual.
+
+- `git log` les muestra todos los commits que se han hecho, presionen **q** para salir
+(si les abre una pantalla nueva), pueden copiar el número de commit
+y darle checkout, para visitar lo que que se tenía en ese commit.
+
+- `git checkout COMMIT_HASH .` para regresar la rama actual a cierto commit.
+
+- `git restore NOMBRE` para restaurar un archivo que no ha sido agregado
+con `git add`, si ya ha sido agregado ejecute `git reset [ARCHIVO (opcional)]` (vea a bajo),
+se puede pasar `.` para restaurar todo el directorio (recuerde que no deben estar en el
+espacio de trabajo), es decir `NOMBRE` puede ser, por decirlo de una manera un path relativo.
+
+- `git reset [ARCHIVO (opcional)]` lo quita del espacio de trabajo
+(añadido con `git add`), sin argumento para quitar todos los archivos
+del espacio del espacio de trabajo.
 
 ## Para Github
-```git push —delete NOMBRERAMA``` para eliminar ramas en Github y no sólo localmente.
+- `git push —delete NOMBRERAMA` para eliminar ramas en Github (nuestro repositorio
+de código).
 
-```git remote update REMOTO --prune``` actualizar las ramas locales.
+- `git remote update REMOTO --prune` actualizar las ramas locales.
 
-```git fetch REMOTO``` traer desde el remoto todo lo que no se tenga localmente.
+- `git fetch REMOTO` traer desde el remoto todo lo que no se tenga.
 
+## SSH
+Puede ser útil agregar una clave SSH para no tener que estar generando PATs para
+pushear al remoto, vea [agregar una clave SSH](https://docs.github.com/es/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 
+- Como bonus, puede ocurrir que tenga más de una cuenta, para usar diferentes claves
+SSH, puede cambiar la configuración local del repositorio de esta forma:
+`git config core.sshcommand "ssh -i ~/.ssh/SU_CLAVE"`, cabe mencionar que lo que
+está cambiando es el comando así que verifique que sea válido.
